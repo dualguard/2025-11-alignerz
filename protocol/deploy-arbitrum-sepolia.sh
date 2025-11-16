@@ -1,0 +1,1 @@
+forge script script/a26zArbitrumSepolia.s.sol:a26zArbitrumSepolia --broadcast --verifier etherscan --etherscan-api-key RSCF1WST8GDYNA42CUSRXSAMWQHTG4YHGQ --verify --account defaultKey --sender YOUR_ADDRESS -vvvv

@@ -1,0 +1,1 @@
+forge script script/a26zAmoy.s.sol:a26zAmoy --broadcast --verifier etherscan --etherscan-api-key WD8D228QC4I398YN9KMUWFEIEFX76TGS2B --verify --account defaultKey --sender YOUR_ADDRESS -vvvv

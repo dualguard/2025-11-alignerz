@@ -1,0 +1,1 @@
+forge script script/a26zPolygon.s.sol:a26zPolygon --broadcast --verifier etherscan --etherscan-api-key RSCF1WST8GDYNA42CUSRXSAMWQHTG4YHGQ --verify --account defaultKey --sender YOUR_ADDRESS -vvvv
