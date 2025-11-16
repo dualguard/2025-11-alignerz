@@ -36,4 +36,4 @@ Known issues: Will soon be provided for you
 [Whitepaper](https://drive.google.com/file/d/1xN5bYUPd_BkBMtoRruHEO1CBUx0vBiit/)
 
 # Audit Scope
-![Scope](scope.jpg)
+![Scope](scope.jpeg)
