@@ -1,0 +1,123 @@
+name: Finding
+description: Current version of the findings that end up in the report
+labels: []
+projects: []
+title: "{actor} will {impact} {affected party}"
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: "A summary with the following structure: **{root cause} will cause [a/an] {impact} for {affected party} as {actor} will {attack path}**"
+      placeholder: "The lack of access control in `vesting.sol` will cause a complete loss of funds for the users and the protocol as an attacker will withdraw the protocol's funds"
+    validations:
+      required: true
+  - type: textarea
+    id: root
+    attributes:
+      label: Root Cause
+      description: |
+        In case it’s a mistake in the code: **In {link to code} the {root cause}**
+
+        _Example:_
+            _- In `vesting.sol:55` there is a lack of access control on a function that should be only called by the owner_
+            _- In `rewardDistributor.sol:12` the check will always pass because of an outdated state variable_
+
+        In case it’s a conceptual mistake: **The choice to {design choice} is a mistake as {root cause}**
+
+        _Example:_
+            _- The choice to use Uniswap as an oracle is a mistake as the price can be manipulated_
+            _- The choice to depend on Protocol X for admin calls is a mistake as it will cause any call to revert_
+      placeholder: "In `vesting.sol:55` there is a missing check for ownership on a function that should be admin only"
+    validations:
+      required: true
+  - type: textarea
+    id: internal-pre
+    attributes:
+      label: Internal Pre-conditions
+      description: |
+        A numbered list of conditions to allow the attack path or vulnerability path to happen:
+        1. [{Role} needs to {action} to set] {variable} to be [at least / at most / exactly / other than] {value}
+        2. [{Role} needs to {action} to set] {variable} to go from {value} to {value} [within {time}]
+
+        _Example:_
+            _- Admin needs to call `setFee()` to set `fee` to be exactly `1 USDC`_
+            _- Number of USDC in the `vesting.sol` contract to be at least `5000 USDC`_
+      placeholder: |
+        1. Admin needs to call `setFee()` to set `fee` to be exactly `1 USDC`
+        2. Number of USDC in `vesting.sol` to go from `500 USDC` to `5000 USDC` within 24 hours
+    validations:
+      required: false
+  - type: textarea
+    id: external-pre
+    attributes:
+      label: External Pre-conditions
+      description: |
+        > Similar to internal pre-conditions but it describes changes in the external protocols
+
+        _Example:_
+            _- ETH oracle needs to go from `3000` to `4000` within 1 minute_
+            _- Gas price needs to be exactly `100 wei`_
+      placeholder: |
+        1. ETH oracle needs to go from `3000` to `4000` within 1 minute
+        2. Gas price needs to be exactly `100 wei`
+    validations:
+      required: false
+  - type: textarea
+    id: attack
+    attributes:
+      label: Attack Path
+      description: |
+        A numbered list of steps, talking through the attack path:
+
+        1. **{Role} calls {function} {extra context}**
+        2. ..
+      placeholder: |
+        1. Attacker frontruns innocent user's transaction by calling the same function with the same arguments and gets his tokens
+        2. Innocent user's transaction reverts as nonce is now invalid
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: |
+        In case it's an attack path: **The {affected party} suffers an approximate loss of {value}. [The attacker gains {gain} or loses {loss}].**
+
+        _Example:_
+            _- The vesters suffer up to a 50% loss during the vesting period. The attacker gains this 50% from vesters._
+            _- The protocol suffers a loss of `1` USDC bidding fee per bid. The attacker loses their portion of the fee and doesn't gain anything (griefing)._
+
+        In case it's a vulnerability path: **The {affected party} [suffers an  approximate loss of {value} OR cannot {execute action}].**
+
+        _Example:_
+            _- The users suffer an approximate loss of 0.01% due to precision loss._
+            _- The user cannot mint NFTs._
+      placeholder: |
+        The users suffer an approximate loss of 0.01% due to precision loss
+    validations:
+      required: true
+  - type: textarea
+    id: poc
+    attributes:
+      label: PoC
+      description: |
+        A coded PoC. Strongly recommended in some cases but optional for other cases.
+      placeholder: |
+        ```solidity
+        // SPDX-License-Identifier: GPL-3.0-or-later
+        pragma solidity >=0.8.0;
+
+        import "forge-std/Test.sol";
+        ...
+        ```
+    validations:
+      required: false
+  - type: textarea
+    id: mitigaton
+    attributes:
+      label: Mitigation
+      description: |
+        Mitigation of the issue (optional)
+    validations:
+      required: false
