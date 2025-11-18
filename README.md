@@ -14,7 +14,9 @@ Protocol only supports standard tokens with 18 decimals, no weird tokens. 6 deci
 Admin is fully trusted
 
 ### Q: Are there any limitations on values set by admins (or other roles) in protocols you integrate with, including restrictions on array lengths?
-Nothing that is not mentioned in the codebase
+`bidFee` and `updateBidFee` can have a maximum of 1 USDC/USDT
+
+`mergeFeeRate` and `splitFeeRate` can be set to 2% at most
 
 ### Q: Is the codebase expected to comply with any specific EIPs?
 No
@@ -30,7 +32,8 @@ I decided to keep the assignedPoolId attribute in the rewardProject struct even 
 
 ### Q: Please provide links to previous audits (if any) and all the known issues or acceptable risks.
 [ShawarmaSec Audit](https://github.com/shawarma-sec/audits/blob/main/final-report-shawarmasec-alignerz.pdf)
-Known issues: Will soon be provided for you
+
+Known issues: [Lightchaser](https://gist.github.com/ChaseTheLight01/05252ba91bb7aac661e1ffe30c76f2d5)
 
 ### Q: Please list any relevant protocol resources.
 [Whitepaper](https://drive.google.com/file/d/1xN5bYUPd_BkBMtoRruHEO1CBUx0vBiit/)
