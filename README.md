@@ -1,5 +1,5 @@
 # 2025-11-alignerz
-- Join [Dualguard](https://discord.gg/UxrgEnbY) Discord
+- Join [Dualguard](https://discord.gg/bEuWzcR5) Discord
 - Submit findings using the Issues page in your private contest repo (label issues as Gas, Info, Low, Medium or High)
 - for more details, read the github channel: guidelines
 
@@ -12,11 +12,12 @@ Protocol only supports standard tokens with 18 decimals, no weird tokens. 6 deci
 
 ### Q: Are there any limitations on values set by admins (or other roles) in the codebase, including restrictions on array lengths?
 Admin is fully trusted
-
-### Q: Are there any limitations on values set by admins (or other roles) in protocols you integrate with, including restrictions on array lengths?
 `bidFee` and `updateBidFee` can have a maximum of 1 USDC/USDT
 
 `mergeFeeRate` and `splitFeeRate` can be set to 2% at most
+
+### Q: Are there any limitations on values set by admins (or other roles) in protocols you integrate with, including restrictions on array lengths?
+No.
 
 ### Q: Is the codebase expected to comply with any specific EIPs?
 No
